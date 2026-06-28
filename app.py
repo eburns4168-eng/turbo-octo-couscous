@@ -306,7 +306,7 @@ if analyze_button:
     rules_text = get_rules_for_prompt()
     client = anthropic.Anthropic()
 
-    with st.spinner("Analyzing..."):
+    with st.spinner("Nova is reviewing your loan against Texas and federal rules..."):
         if input_method == "📄 Upload Document" and uploaded_text:
             file_type, file_content = uploaded_text
             context_hints = {}
