@@ -327,13 +327,15 @@ if analyze_button:
 
         response = client.messages.create(
             model="claude-sonnet-4-6",
-            max_tokens=4000,
+            max_tokens=8000,
             system=SYSTEM_PROMPT,
             messages=messages
         )
 
     raw = response.content[0].text
     clean = raw.strip()
+
+    # Strip markdown code fences
     if "```" in clean:
         parts = clean.split("```")
         clean = parts[1] if len(parts) > 1 else parts[0]
@@ -341,12 +343,30 @@ if analyze_button:
             clean = clean[4:]
     clean = clean.strip()
 
+    # Find the JSON object if there is surrounding text
+    if not clean.startswith("{"):
+        start = clean.find("{")
+        end = clean.rfind("}")
+        if start != -1 and end != -1:
+            clean = clean[start:end+1]
+
     try:
         result = json.loads(clean)
     except json.JSONDecodeError:
-        st.error("Could not parse response.")
-        st.code(raw)
-        st.stop()
+        # Last resort — try to extract just the JSON block
+        import re
+        match = re.search(r'\{.*\}', clean, re.DOTALL)
+        if match:
+            try:
+                result = json.loads(match.group())
+            except:
+                st.error("Could not parse Nova's response. Please try again.")
+                st.code(raw)
+                st.stop()
+        else:
+            st.error("Could not parse Nova's response. Please try again.")
+            st.code(raw)
+            st.stop()
 
     # ─────────────────────────────────────────
     # RESULTS
