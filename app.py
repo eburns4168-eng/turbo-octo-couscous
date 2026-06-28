@@ -66,6 +66,27 @@ h1, h2, h3 {
     border-radius: 6px !important;
 }
 
+.stNumberInput > div {
+    background-color: #1a1a1a !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 6px !important;
+}
+
+.stNumberInput > div > div {
+    background-color: #1a1a1a !important;
+}
+
+.stNumberInput button {
+    background-color: #1a1a1a !important;
+    border: none !important;
+    color: #666 !important;
+}
+
+input[type="number"] {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
 .stRadio > div {
     background-color: #111111;
     border-radius: 8px;
