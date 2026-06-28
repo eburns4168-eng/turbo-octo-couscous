@@ -362,14 +362,14 @@ if analyze_button:
     st.markdown("<div style='height: 2rem'></div>", unsafe_allow_html=True)
     st.markdown(f"""
     <div style='border-left: 4px solid {risk_color}; padding: 1.25rem 1.5rem; background: #111; border-radius: 0 8px 8px 0; margin-bottom: 1.5rem;'>
-        <div style='font-size: 11px; color: #666; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;'>Risk Assessment</div>
+        <div style='font-size: 11px; color: #666; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;'>Nova's Risk Assessment</div>
         <div style='font-size: 24px; font-weight: 900; color: {risk_color}; letter-spacing: -0.02em; margin-bottom: 8px;'>{risk}</div>
         <div style='font-size: 14px; color: #aaa; line-height: 1.6;'>{result.get("summary", "")}</div>
     </div>
     """, unsafe_allow_html=True)
 
     if findings:
-        st.markdown(f"<p style='font-size:11px; color:#666; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1rem;'>Issues Found — {len(findings)}</p>", unsafe_allow_html=True)
+        st.markdown(f"<p style='font-size:11px; color:#666; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1rem;'>Nova found {len(findings)} issue(s)</p>", unsafe_allow_html=True)
         for f in findings:
             sev = f.get("severity", "MODERATE")
             color = severity_color.get(sev, "#888")
