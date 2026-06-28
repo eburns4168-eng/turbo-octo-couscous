@@ -87,10 +87,36 @@ h1, h2, h3 {
 }
 
 .stFileUploader {
-    background-color: #111111;
-    border: 1px dashed #2a2a2a;
-    border-radius: 8px;
-    padding: 1rem;
+    background-color: #111111 !important;
+    border: 1px dashed #2a2a2a !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+}
+
+.stFileUploader > div {
+    background-color: #1a1a1a !important;
+    border: none !important;
+}
+
+.stFileUploader > div > div {
+    background-color: #1a1a1a !important;
+    color: #666 !important;
+}
+
+[data-testid="stFileUploaderDropzone"] {
+    background-color: #1a1a1a !important;
+    border: 1px dashed #2a2a2a !important;
+    color: #666 !important;
+}
+
+[data-testid="stFileUploaderDropzone"] * {
+    color: #666 !important;
+}
+
+[data-testid="stFileUploaderDropzone"] button {
+    background-color: #2a2a2a !important;
+    color: #aaa !important;
+    border: 1px solid #333 !important;
 }
 
 .stAlert {
